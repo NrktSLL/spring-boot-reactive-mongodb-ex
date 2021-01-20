@@ -2,7 +2,6 @@ package com.nrkt.springbootreactivemongodb.api;
 
 import com.nrkt.springbootreactivemongodb.dto.response.FileResponse;
 import com.nrkt.springbootreactivemongodb.service.fileoperation.FileService;
-import io.swagger.v3.oas.annotations.Hidden;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
@@ -49,7 +48,6 @@ public class FileController {
 
     @GetMapping("/files/download/{id}")
     @ResponseStatus(HttpStatus.OK)
-    @Hidden
     public Flux<Void> downloadFile(@PathVariable String id, ServerWebExchange exchange) {
         return fileService.getFile(id)
                 .flatMapMany(resource -> {
