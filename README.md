@@ -24,7 +24,7 @@ docker-compose up -d
 * Spring Boot Data MongoDB Reactive
 * Spring Boot Actuator
 * Lombok
-* Map Struct
+* MapStruct
 * Springdoc Openapi Webflux UI
 
 Content Negotiation Support(Json,Hal Support)
