@@ -28,7 +28,7 @@ docker-compose up -d
 * Springdoc Openapi Webflux UI
 
 ## Abilities
-Content Negotiation Support(Json,Hal Support)
+* Content Negotiation Support(Json,Hal Support)
 
 
 ## Open API Swagger ;
