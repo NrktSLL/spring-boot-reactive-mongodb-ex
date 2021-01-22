@@ -21,7 +21,7 @@ public class OpenApiConfig implements OperationCustomizer {
     public Operation customize(Operation operation, HandlerMethod handlerMethod) {
         Parameter parameterHeader = new Parameter()
                 .in(ParameterIn.QUERY.toString())
-                .description("Enter media type: xml, json or hal. (Default: json, hal = \"application/hal+json\" with link)")
+                .description("Enter media type: json or hal. (Default: json, hal = \"application/hal+json\" with link)")
                 .required(false)
                 .name("mediaType")
                 .schema(new StringSchema()
