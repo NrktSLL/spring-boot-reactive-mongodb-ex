@@ -22,7 +22,7 @@ public class FileController {
 
     FileService fileService;
 
-    @PostMapping(value = "/files{id}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @PostMapping(value = "/files/{id}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     @ResponseStatus(HttpStatus.OK)
     public Mono<FileResponse> uploadFile(@PathVariable String id,
                                          @RequestPart Mono<FilePart> file) {
