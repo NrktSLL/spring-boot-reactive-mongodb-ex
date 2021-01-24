@@ -1,4 +1,4 @@
-package com.nrkt.springbootreactivemongodb.decarator;
+package com.nrkt.springbootreactivemongodb.decorator;
 
 import com.nrkt.springbootreactivemongodb.api.EmployeeController;
 import com.nrkt.springbootreactivemongodb.domain.Employee;

@@ -1,6 +1,6 @@
 package com.nrkt.springbootreactivemongodb.mapper;
 
-import com.nrkt.springbootreactivemongodb.decarator.EmployeeDecorator;
+import com.nrkt.springbootreactivemongodb.decorator.EmployeeDecorator;
 import com.nrkt.springbootreactivemongodb.domain.Employee;
 import com.nrkt.springbootreactivemongodb.dto.request.EmployeeRequest;
 import com.nrkt.springbootreactivemongodb.dto.response.EmployeeResponse;

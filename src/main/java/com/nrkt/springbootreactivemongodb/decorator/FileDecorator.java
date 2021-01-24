@@ -1,4 +1,4 @@
-package com.nrkt.springbootreactivemongodb.decarator;
+package com.nrkt.springbootreactivemongodb.decorator;
 
 import com.nrkt.springbootreactivemongodb.api.FileController;
 import com.nrkt.springbootreactivemongodb.dto.response.FileResponse;
