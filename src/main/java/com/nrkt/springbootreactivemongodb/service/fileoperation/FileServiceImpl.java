@@ -18,6 +18,9 @@ import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+
 import static org.springframework.data.mongodb.core.query.Criteria.where;
 import static org.springframework.data.mongodb.core.query.Query.query;
 
@@ -31,12 +34,13 @@ public class FileServiceImpl implements FileService {
     FileMapper fileMapper;
 
     @Override
-    public Mono<FileResponse> uploadFile(String employeeId, Mono<FilePart> filePart) {
+    public Mono<FileResponse> uploadFile(@NotBlank String employeeId, @NotEmpty Mono<FilePart> filePart) {
         DBObject dbObject = new BasicDBObject();
-        dbObject.put("employeeId",employeeId);
+        dbObject.put("employeeId", employeeId);
         return filePart
                 .flatMap(part -> gridFsOperations.store(part.content(), part.filename(), dbObject)).log()
                 .map(id -> fileMapper.fileResponse(id.toHexString()));
+
     }
 
     @Override
@@ -47,14 +51,14 @@ public class FileServiceImpl implements FileService {
     }
 
     @Override
-    public Flux<FileResponse> getFiles(String employeeId) {
+    public Flux<FileResponse> getFiles(@NotBlank String employeeId) {
         return gridFsOperations
                 .find(query(Criteria.where("metadata.employeeId").is(employeeId)))
                 .map(x -> fileMapper.fileResponse(x.getObjectId().toHexString(), x.getUploadDate()));
     }
 
     @Override
-    public Mono<ReactiveGridFsResource> getFile(String id) {
+    public Mono<ReactiveGridFsResource> getFile(@NotBlank String id) {
         return gridFsOperations.findOne(query(where("_id").is(id)))
                 .switchIfEmpty(Mono.error(new GridFsException("File not found to id: " + id)))
                 .log()
@@ -62,7 +66,7 @@ public class FileServiceImpl implements FileService {
     }
 
     @Override
-    public Mono<Void> deleteFile(String id) {
+    public Mono<Void> deleteFile(@NotBlank String id) {
         Query query = query(where("_id").is(id));
         return gridFsOperations.findOne(query)
                 .switchIfEmpty(Mono.error(new GridFsException("File not found to id: " + id)))

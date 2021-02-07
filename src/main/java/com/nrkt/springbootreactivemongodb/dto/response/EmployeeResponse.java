@@ -18,6 +18,7 @@ import java.util.Date;
 @EqualsAndHashCode(callSuper = true, onlyExplicitlyIncluded = true)
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Relation(collectionRelation = "employees", itemRelation = "employee")
+@Builder
 public class EmployeeResponse extends BaseResponse {
 
     @NotBlank

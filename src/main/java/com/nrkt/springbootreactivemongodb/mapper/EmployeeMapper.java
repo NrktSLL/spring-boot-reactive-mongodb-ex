@@ -5,11 +5,12 @@ import com.nrkt.springbootreactivemongodb.domain.Employee;
 import com.nrkt.springbootreactivemongodb.dto.request.EmployeeRequest;
 import com.nrkt.springbootreactivemongodb.dto.response.EmployeeResponse;
 import org.mapstruct.DecoratedWith;
+import org.mapstruct.InjectionStrategy;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.springframework.web.server.ServerWebExchange;
 
-@Mapper
+@Mapper(injectionStrategy = InjectionStrategy.CONSTRUCTOR)
 @DecoratedWith(EmployeeDecorator.class)
 public interface EmployeeMapper {
 

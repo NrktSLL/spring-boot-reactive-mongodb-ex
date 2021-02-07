@@ -2,6 +2,7 @@ package com.nrkt.springbootreactivemongodb.api;
 
 import com.nrkt.springbootreactivemongodb.dto.response.FileResponse;
 import com.nrkt.springbootreactivemongodb.service.fileoperation.FileService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
@@ -18,6 +19,7 @@ import reactor.core.publisher.Mono;
 @RequestMapping("/versions/1")
 @RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
+@Tag(name = "files", description = "Retrieve and manage files")
 public class FileController {
 
     FileService fileService;

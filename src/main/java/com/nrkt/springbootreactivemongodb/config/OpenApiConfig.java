@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.method.HandlerMethod;
 
 @OpenAPIDefinition(
-        info = @Info(title = "Spring Boot Reactive Ex",
+        info = @Info(title = "Spring Boot Reactive Example",
                 version = "1.0",
                 description = "Spring Boot Reactive Example with MongoDB and MongoDB Gridfs"))
 @Configuration
@@ -24,6 +24,7 @@ public class OpenApiConfig implements OperationCustomizer {
                 .description("Enter media type: json or hal. (Default: json, hal = \"application/hal+json\" with link)")
                 .required(false)
                 .name("mediaType")
+                .example("hal")
                 .schema(new StringSchema()
                         .addEnumItem("hal")
                         .addEnumItem("json")

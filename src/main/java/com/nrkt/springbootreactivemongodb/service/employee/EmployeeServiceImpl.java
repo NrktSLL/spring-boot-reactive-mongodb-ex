@@ -14,6 +14,8 @@ import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import javax.validation.constraints.NotBlank;
+
 @Service
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 @RequiredArgsConstructor
@@ -24,14 +26,14 @@ public class EmployeeServiceImpl implements EmployeeService {
     EmployeeMapper employeeMapper;
 
     @Override
-    public Mono<EmployeeResponse> addEmployee(EmployeeRequest employee, ServerWebExchange exchange) {
+    public Mono<EmployeeResponse> addEmployee(@NotBlank EmployeeRequest employee, ServerWebExchange exchange) {
         var newEmployee = employeeMapper.employeeRequestToEmployeeEntity(employee);
         var savedEmployee = employeeRepository.save(newEmployee);
         return savedEmployee.map(item -> employeeMapper.employeeEntityToEmployeeResponse(item, exchange)).log();
     }
 
     @Override
-    public Mono<EmployeeResponse> updateEmployee(String id, EmployeeRequest employee, ServerWebExchange exchange) {
+    public Mono<EmployeeResponse> updateEmployee(@NotBlank String id, EmployeeRequest employee, ServerWebExchange exchange) {
         var existEmployee = Mono.just(id)
                 .flatMap(employeeRepository::findById)
                 .switchIfEmpty(Mono.error(new BadRequestException("employee not found"))).log()
@@ -42,12 +44,12 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public Mono<Void> removeEmployee(String id) {
+    public Mono<Void> removeEmployee(@NotBlank String id) {
         return employeeRepository.deleteById(id);
     }
 
     @Override
-    public Mono<EmployeeResponse> getEmployee(String id, ServerWebExchange exchange) {
+    public Mono<EmployeeResponse> getEmployee(@NotBlank String id, ServerWebExchange exchange) {
         return Mono.just(id)
                 .flatMap(employeeRepository::findById)
                 .switchIfEmpty(Mono.error(new BadRequestException("employee not found")))
