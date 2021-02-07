@@ -31,7 +31,7 @@ docker-compose up -d
 * Content Negotiation Support(Json,Hal Support)
 
 
-## Open API Swagger ;
+## Swagger ;
 > **Access : http://localhost:8080/api/documentation/**
 >
 
