@@ -3,6 +3,7 @@ package com.nrkt.springbootreactivemongodb.api;
 import com.nrkt.springbootreactivemongodb.dto.request.EmployeeRequest;
 import com.nrkt.springbootreactivemongodb.dto.response.EmployeeResponse;
 import com.nrkt.springbootreactivemongodb.service.employee.EmployeeService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
@@ -19,6 +20,7 @@ import javax.validation.constraints.NotNull;
 @RequestMapping(value = "/v1/employees")
 @RequiredArgsConstructor
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
+@Tag(name = "employees", description = "Manage Employee")
 public class EmployeeController {
 
     EmployeeService employeeService;
